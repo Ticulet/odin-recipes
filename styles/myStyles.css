@@ -1,0 +1,53 @@
+.recipes-list {
+    align-content: center;
+    background-color: rgb(255, 143, 143);
+    height: 500px;
+    width: 400px;
+    padding: 50px;
+    border: 15px solid;
+    border-color: red;
+    margin: auto;
+}
+
+.lasagna-recipe,
+.pizza-recipe {
+    text-align: center;
+    width: 300px;
+    height: 50px;
+    background-color: rgb(255, 176, 59);
+    padding-top: 40px;
+    border: 5px solid;
+    margin: 10px;
+}
+
+.header-odin {
+    text-align: center;
+    color: rgb(216, 78, 78);
+}
+
+body {
+    background-color: bisque;
+}
+
+.recipe-image {
+    display: block;
+    margin: auto;
+    width: 50%;
+}
+
+.back-homepage {
+    margin-left: 50px;
+}
+
+.recipe-description {
+    padding: 50px;
+    margin: 50px;
+    background-color: burlywood;
+    border: 10px solid;
+}
+
+.back-homepage {
+    background-color: aqua;
+    padding: 10px;
+    border: 5px black solid;
+}
