@@ -4,9 +4,9 @@ function getComputerChoice() {
   let paperChoice = "paper";
   let scissorsChoice = "scissors";
 
-  if (randomComputer == 0) {
+  if (randomComputer === 0) {
     return rockChoice;
-  } else if (randomComputer == 1) {
+  } else if (randomComputer === 1) {
     return paperChoice;
   } else {
     return scissorsChoice;
@@ -15,38 +15,43 @@ function getComputerChoice() {
 
 let playerScore = 0;
 let computerScore = 0;
-let gameCounter = 5;
+
+const GAME_ROUNDS = 5;
 
 function determineWinner(playerChoice, computerChoice) {
-  if (playerChoice == "rock" && computerChoice == "scissors") {
+  if (playerChoice === "rock" && computerChoice === "scissors") {
     playerScore++;
   }
-  if (playerChoice == "scissors" && computerChoice == "paper") {
+  if (playerChoice === "scissors" && computerChoice === "paper") {
     playerScore++;
   }
-  if (playerChoice == "paper" && computerChoice == "rock") {
+  if (playerChoice === "paper" && computerChoice === "rock") {
     playerScore++;
   }
-  if (playerChoice == computerChoice) {
+  if (playerChoice === computerChoice) {
     console.log("TIE!");
   }
 
-  if (computerChoice == "rock" && playerChoice == "scissors") {
+  if (computerChoice === "rock" && playerChoice === "scissors") {
     computerScore++;
   }
-  if (computerChoice == "scissors" && playerChoice == "paper") {
+  if (computerChoice === "scissors" && playerChoice === "paper") {
     computerScore++;
   }
-  if (computerChoice == "paper" && playerChoice == "rock") {
+  if (computerChoice === "paper" && playerChoice === "rock") {
     computerScore++;
   }
+  updateScoreMessage(playerScore, computerScore, GAME_ROUNDS);
+}
 
-  if (playerScore == gameCounter || computerScore == gameCounter) {
+function updateScoreMessage(playerScore, computerScore, GAME_ROUNDS) {
+  if (playerScore === GAME_ROUNDS || computerScore === GAME_ROUNDS) {
     const buttonsDiv = document.querySelector(".buttons-div");
     const finalMessage = document.createElement("h3");
     finalMessage.classList.add("game-end-message");
     finalMessage.textContent = "GAME ENDED";
     buttonsDiv.append(finalMessage);
+
     const buttons = buttonsDiv.querySelectorAll("button");
     buttons.forEach((button) => button.remove());
   }
@@ -56,6 +61,16 @@ const buttonsDiv = document.querySelector(".buttons-div");
 const messageWinner = document.querySelector(".message-winner");
 const scoreBoard = document.querySelector(".score-board");
 
+function winnerMessage(playerChoice, computerChoice) {
+  let winMessage = `You chose ${playerChoice} computer chose ${computerChoice}`;
+  return winMessage;
+}
+
+function scoreboardMessage(playerScore, computerScore) {
+  let scoreMessage = `Human score: ${playerScore} Computer Score ${computerScore}`;
+  return scoreMessage;
+}
+
 buttonsDiv.addEventListener("click", (e) => {
   let playerChoice = "";
   let computerChoice = getComputerChoice();
@@ -63,25 +78,19 @@ buttonsDiv.addEventListener("click", (e) => {
     playerChoice = "rock";
     console.log(playerChoice);
     determineWinner(playerChoice, computerChoice);
-    messageWinner.textContent =
-      "You chose " + playerChoice + " computer chose " + computerChoice;
-    scoreBoard.textContent =
-      "Human score: " + playerScore + " Computer Score " + computerScore;
+    messageWinner.textContent = winnerMessage(playerChoice, computerChoice);
+    scoreBoard.textContent = scoreboardMessage(playerScore, computerScore);
   }
   if (e.target.classList.contains("button-paper")) {
     playerChoice = "paper";
     determineWinner(playerChoice, computerChoice);
-    messageWinner.textContent =
-      "You chose " + playerChoice + " computer chose " + computerChoice;
-    scoreBoard.textContent =
-      "Human score: " + playerScore + " Computer Score " + computerScore;
+    messageWinner.textContent = winnerMessage(playerChoice, computerChoice);
+    scoreBoard.textContent = scoreboardMessage(playerScore, computerScore);
   }
   if (e.target.classList.contains("button-scissors")) {
     playerChoice = "scissors";
     determineWinner(playerChoice, computerChoice);
-    messageWinner.textContent =
-      "You chose " + playerChoice + " computer chose " + computerChoice;
-    scoreBoard.textContent =
-      "Human score: " + playerScore + " Computer Score " + computerScore;
+    messageWinner.textContent = winnerMessage(playerChoice, computerChoice);
+    scoreBoard.textContent = scoreboardMessage(playerScore, computerScore);
   }
 });
