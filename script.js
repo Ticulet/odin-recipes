@@ -42,3 +42,23 @@ function setHover() {
 }
 
 setHover();
+
+function resetSketch() {
+  const resetSketch = document.querySelector(".button-new-sketch");
+  resetSketch.addEventListener("click", () => {
+    let gridNumber = Number(prompt("Introduce the number of grids"));
+    if (gridNumber >= 100) {
+      alert("NUMBER IS TOO HIGH");
+      gridNumber = Number(prompt("Give a new number below 100"));
+    }
+    if (gridNumber === 0) {
+      alert("Number can't be 0");
+      gridNumber = Number(prompt("Give new number"));
+    }
+    let screen = document.querySelector(".sketch-screen");
+    screen.innerHTML = " ";
+    makeGrids(gridNumber);
+  });
+}
+
+resetSketch();
