@@ -1,0 +1,56 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100%;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.sketch-container {
+  display: flex;
+  justify-content: center;
+}
+
+.sketch-screen {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 600px;
+  height: 600px;
+  background-color: white;
+}
+
+.sketch-screen > div {
+  height: auto;
+  flex: 1 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.sketch-screen > div * {
+  flex: 1;
+}
+.container-button {
+    display: flex;
+    justify-content: center;
+}
+
+.container-button button {
+    margin-top: 20px;
+    width: 150px;
+    height: 50px;
+    font-size: 24px;
+    font-weight: 800;
+    border-radius: 15px;
+}
