@@ -22,7 +22,11 @@ function setHover() {
   sketchScreen.addEventListener("mousedown", (e) => {
     isDrawing = true;
     if (e.target.classList.contains("row")) {
-      e.target.style.backgroundColor = "gray";
+      e.target.style.backgroundColor = `rgb(${Math.floor(
+        Math.random() * 256
+      )},${Math.floor(Math.random() * 256)}, ${Math.floor(
+        Math.random() * 256
+      )} )`;
     }
   });
 
@@ -36,7 +40,11 @@ function setHover() {
 
   sketchScreen.addEventListener("mouseover", (e) => {
     if (isDrawing && e.target.classList.contains("row")) {
-      e.target.style.backgroundColor = "gray";
+      e.target.style.backgroundColor = `rgb(${Math.floor(
+        Math.random() * 256
+      )},${Math.floor(Math.random() * 256)}, ${Math.floor(
+        Math.random() * 256
+      )} )`;
     }
   });
 }
@@ -51,9 +59,11 @@ function resetSketch() {
       alert("NUMBER IS TOO HIGH");
       gridNumber = Number(prompt("Give a new number below 100"));
     }
-    if (gridNumber === 0) {
-      alert("Number can't be 0");
-      gridNumber = Number(prompt("Give new number"));
+    if (gridNumber === 0 || gridNumber == null) {
+      while (gridNumber === 0) {
+        alert("Number can't be 0 or input field can't be empty!");
+        gridNumber = Number(prompt("Give new number"));
+      }
     }
     let screen = document.querySelector(".sketch-screen");
     screen.innerHTML = " ";
